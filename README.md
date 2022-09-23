@@ -8,7 +8,8 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 ![](.images/gifs/AVA_10.gif) ![](.images/gifs/BDD_2.gif) ![](.images/gifs/Charades_5.gif) ![](.images/gifs/Charades_7.gif)
 ![](.images/gifs/Charades_10.gif) ![](.images/gifs/HACS_2.gif) ![](.images/gifs/HACS_7.gif) ![](.images/gifs/HACS_8.gif)
 ![](.images/gifs/HACS_10.gif) ![](.images/gifs/LaSOT_2.gif) ![](.images/gifs/LaSOT_4.gif) ![](.images/gifs/LaSOT_8.gif)
-![](.images/gifs/YFCC100M_2.gif) ![](.images/gifs/YFCC100M_6.gif) ![](.images/gifs/YFCC100M_8.gif) ![](.images/gifs/BDD_4.gif)
+![](.images/gifs/YFCC100M_2.gif) ![](.images/gifs/YFCC100M_6.gif) 
+<! -- ![](.images/gifs/YFCC100M_8.gif) ![](.images/gifs/BDD_4.gif) -->
 
 ### Abstract
 
