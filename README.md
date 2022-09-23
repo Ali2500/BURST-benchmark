@@ -4,8 +4,8 @@
 
 BURST is a dataset/benchmark for object segmentation in video. It contains a total of 2,914 videos with pixel-precise segmentation masks for 16,089 unique object tracks (600,000 per-frame masks) spanning 482 object classes.
 
-| ![](.images/gifs/ArgoVerse_1.gif)  | ![](.images/gifs/AVA_1.gif) |
-| ![](.images/gifs/BDD_1.gif)  | ![](.images/gifs/HACS_1.gif)  |
+![](.images/gifs/ArgoVerse_1.gif)  | ![](.images/gifs/AVA_1.gif)
+![](.images/gifs/BDD_1.gif)  | ![](.images/gifs/HACS_1.gif) 
 
 
 ### Abstract
