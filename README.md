@@ -66,3 +66,7 @@ python burstapi/demo.py --images_base_dir /path/to/dataset/images --annotations_
 
 Will be uploaded soon to [TrackEval](https://github.com/JonathonLuiten/TrackEval).
 
+## Baselines
+
+Coming soon
+
