@@ -24,7 +24,43 @@ Multiple existing benchmarks involve tracking and segmenting objects in video e.
 - Image sequences: Available from the [MOTChallenge website](https://motchallenge.net/tao_download.php).
 - Annotations: Available from [RWTH omnomnom](https://omnomnom.vision.rwth-aachen.de/data/BURST_annotations.zip)
 
+The annotations are organized in the following directory structure:
+
+```
+- train:
+  - all_classes.json
+- val:
+  - all_classes.json
+  - common_classes.json
+  - uncommon_classes.json
+  - first_frame_annotations.json
+- test:
+  - all_classes.json
+  - common_classes.json
+  - uncommon_classes.json
+  - first_frame_annotations.json
+- info:
+  - categories.json
+  - class_split.json
+```
+
+For each split, `all_classes.json` is the primary file containing all mask annotations. The others are a sub-set of those: `common_classes.json` and `uncommon_classes.json` only contain object tracks belonging to the corresponding class split (see `class_split.json`). The `first_frame_annotations.json` file is relevant only for the exemplar-guided tasks since it contains the annotations for each object track in only the first frame where it occurs. This can be easily deduced from the primary annotations file as well, but we provide it separately for ease of use.
+
 *NOTE:* In contrast to other datasets, we have decided to make the test set annotations public. Remember though: with great power comes great responsibility. Please use the test set fairly when reporting scores for your methods.
+
+## Parsing and Visualization
+
+Please refer to `burstapi/dataset.py` for example code to parse the annotations.
+
+Assuming the images and annotation files are downloaded, you can visualize the masks by running the following:
+
+```
+python burstapi/demo.py --images_base_dir /path/to/dataset/images --annotations_file /path/to/any/of/the/annotation/files
+```
+
+- `--images_base_dir` should have three sub-folders in it: `train`, `val` and `test` with the images for each of those splits.
+- When running the demo script for one of the `first_frame_annotations` files, also include an additional `--first_frame_annotations` argument to the above command. The demo script will then als oshow the first-frame exemplar point.
+
 
 ## Evaluation Code
 
