@@ -72,3 +72,13 @@ Will be uploaded soon to [TrackEval](https://github.com/JonathonLuiten/TrackEval
 
 Coming soon
 
+## Cite
+
+```
+@article{athar2022burst,
+  title={BURST: A Benchmark for Unifying Object Recognition, Segmentation and Tracking in Video},
+  author={Athar, Ali and Luiten, Jonathon and Voigtlaender, Paul and Khurana, Tarasha and Dave, Achal and Leibe, Bastian and Ramanan, Deva},
+  journal={arXiv},
+  year={2022}
+}
+```
