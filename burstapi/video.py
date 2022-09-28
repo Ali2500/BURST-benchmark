@@ -13,7 +13,7 @@ class BURSTVideo:
         self.annotated_image_paths: List[str] = video_dict["annotated_image_paths"]
         self.all_images_paths: List[str] = video_dict["all_image_paths"]
         self.segmentations: List[Dict[int, Dict[str, Any]]] = video_dict["segmentations"]
-        self._track_category_ids: Dict[int, int] = video_dict["categories"]
+        self._track_category_ids: Dict[int, int] = video_dict["track_category_ids"]
         self.image_size: Tuple[int, int] = (video_dict["height"], video_dict["width"])
 
         self.id = video_dict["id"]
