@@ -2,6 +2,8 @@
 
 Ali Athar, Jonathon Luiten, Paul Voigtlaender, Tarasha Khurana, Achal Dave, Bastian Leibe, Deva Ramanan
 
+[`arXiv`](https://arxiv.org/pdf/2209.12118.pdf) | [`Dataset Images`](https://motchallenge.net/tao_download.php) | [`Dataset Annotations`](https://omnomnom.vision.rwth-aachen.de/data/BURST_annotations.zip)
+
 ### TL;DR
 
 BURST is a dataset/benchmark for object segmentation in video. It contains a total of 2,914 videos with pixel-precise segmentation masks for 16,089 unique object tracks (600,000 per-frame masks) spanning 482 object classes.
