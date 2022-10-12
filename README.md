@@ -1,4 +1,4 @@
-# BURST: A Benchmark for Unifying Object Recognition, Segmentation and Tracking in Video
+# BURST: A Benchmark for Unifying Object Recognition, Segmentation and Tracking in Video (WACV'23)
 
 Ali Athar, Jonathon Luiten, Paul Voigtlaender, Tarasha Khurana, Achal Dave, Bastian Leibe, Deva Ramanan
 
@@ -77,10 +77,10 @@ Coming soon
 ## Cite
 
 ```
-@article{athar2022burst,
+@article{athar2023burst,
   title={BURST: A Benchmark for Unifying Object Recognition, Segmentation and Tracking in Video},
   author={Athar, Ali and Luiten, Jonathon and Voigtlaender, Paul and Khurana, Tarasha and Dave, Achal and Leibe, Bastian and Ramanan, Deva},
-  journal={arXiv},
-  year={2022}
+  journal={WACV},
+  year={2023}
 }
 ```
