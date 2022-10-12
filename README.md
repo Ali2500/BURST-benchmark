@@ -24,7 +24,7 @@ Multiple existing benchmarks involve tracking and segmenting objects in video e.
 ## Dataset Download
 
 - Image sequences: Available from the [MOTChallenge website](https://motchallenge.net/tao_download.php).
-- Annotations: Available from [(temporarily down)]()
+- Annotations: Available from [RWTH omnomnom](https://omnomnom.vision.rwth-aachen.de/data/BURST/annotations.zip)
 
 The annotations are organized in the following directory structure:
 
