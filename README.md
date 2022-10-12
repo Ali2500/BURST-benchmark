@@ -21,6 +21,8 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 
 Multiple existing benchmarks involve tracking and segmenting objects in video e.g., Video Object Segmentation (VOS) and Multi-Object Tracking and Segmentation (MOTS), but there is little interaction between them due to the use of disparate benchmark datasets and metrics (e.g. J&F, mAP, sMOTSA). As a result, published works usually target a particular benchmark, and are not easily comparable to each another. We believe that the development of generalized methods that can tackle multiple tasks requires greater cohesion among these research sub-communities. In this paper, we aim to facilitate this by proposing BURST, a dataset which contains thousands of diverse videos with high-quality object masks, and an associated benchmark with six tasks involving object tracking and segmentation in video. All tasks are evaluated using the same data and comparable metrics, which enables researchers to consider them in unison, and hence, more effectively pool knowledge from different methods across different tasks. Additionally, we demonstrate several baselines for all tasks and show that approaches for one task can be applied to another with a quantifiable and explainable performance difference.
 
+**NOTE:** The annotations in this dataset are not exhaustive i.e. not every object belonging to the dataset class set is annotated. We do, however, provide two fields per video which convey (1) which classes are present but not exhaustively annotated, and (2) which classes are definitely not present in the video. This follows the format of the LVIS dataset.
+
 ## Dataset Download
 
 - Image sequences: Available from the [MOTChallenge website](https://motchallenge.net/tao_download.php).
@@ -48,7 +50,7 @@ The annotations are organized in the following directory structure:
 
 For each split, `all_classes.json` is the primary file containing all mask annotations. The others are a sub-set of those: `common_classes.json` and `uncommon_classes.json` only contain object tracks belonging to the corresponding class split (see `class_split.json`). The `first_frame_annotations.json` file is relevant only for the exemplar-guided tasks since it contains the annotations for each object track in only the first frame where it occurs. This can be easily deduced from the primary annotations file as well, but we provide it separately for ease of use.
 
-*NOTE:* In contrast to other datasets, we have decided to make the test set annotations public. Remember though: with great power comes great responsibility. Please use the test set fairly when reporting scores for your methods.
+**NOTE:** In contrast to other datasets, we have decided to make the test set annotations public. Remember though: with great power comes great responsibility. Please use the test set fairly when reporting scores for your methods.
 
 ## Parsing and Visualization
 
