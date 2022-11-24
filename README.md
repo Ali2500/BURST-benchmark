@@ -19,7 +19,8 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 
 ### Updates
 
-* **24-12-2022:** Evaluation code is now available!
+* **24-12-2022:** Evaluation code is now available.
+* **24-09-2022:** Dataset annotations are public.
 
 ### Abstract
 
