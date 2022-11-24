@@ -68,7 +68,7 @@ python burstapi/demo.py --images_base_dir /path/to/dataset/images --annotations_
 ```
 
 - `--images_base_dir` should have three sub-folders in it: `train`, `val` and `test` with the images for each of those splits.
-- When running the demo script for one of the `first_frame_annotations` files, also include an additional `--first_frame_annotations` argument to the above command. The demo script will then als oshow the first-frame exemplar point.
+- When running the demo script for one of the `first_frame_annotations` files, also include an additional `--first_frame_annotations` argument to the above command. The demo script will then also show the first-frame exemplar point.
 
 
 ## Evaluation
