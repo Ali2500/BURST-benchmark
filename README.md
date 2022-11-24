@@ -70,7 +70,7 @@ python burstapi/demo.py --images_base_dir /path/to/dataset/images --annotations_
 - When running the demo script for one of the `first_frame_annotations` files, also include an additional `--first_frame_annotations` argument to the above command. The demo script will then als oshow the first-frame exemplar point.
 
 
-## Evaluation Code
+## Evaluation
 
 The evaluation code has been integrated into the [TrackEval](https://github.com/JonathonLuiten/TrackEval) repository. You can either set up the directory structure required by TrackEval yourself, or you can use the wrapper API provided in this repo in `burstapi/eval` as follows:
 
@@ -79,6 +79,10 @@ Your results should be in a single JSON file in the same format as the ground-tr
 ```
 bash burstapi/eval/run.sh --pred /path/to/your/predictions.json --gt /path/to/directory/with/gt_annotations --task {class_guided,exemplar_guided,open_world}
 ```
+
+For this to work, you need to clone the TrackEval repo and set the environment variable `TRACKEVAL_DIR` to its path.
+
+Additional Details: This bash script creates a temporary directory and copies the provided predictions and ground-truth files there before calling the eval scripts for BURST in TrackEval. The three exemplar-guided tasks share the same evaluation procedure, as do the common and long-tail class-guided tasks. For the open-world tracking task, the internal TrackEval script is actually executed three times for the different class splits and the results for each run are printed separately.
 
 ## Baselines
 
