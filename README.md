@@ -8,14 +8,18 @@ Ali Athar, Jonathon Luiten, Paul Voigtlaender, Tarasha Khurana, Achal Dave, Bast
 
 BURST is a dataset/benchmark for object segmentation in video. It contains a total of 2,914 videos with pixel-precise segmentation masks for 16,089 unique object tracks (600,000 per-frame masks) spanning 482 object classes.
 
-![](.images/gifs/AVA_2.gif) ![](.images/gifs/AVA_3.gif) ![](.images/gifs/AVA_5.gif) ![](.images/gifs/AVA_9.gif) 
+![](.images/gifs/AVA_2.gif) ![](.images/gifs/AVA_3.gif) ![](.images/gifs/AVA_5.gif) ![](.images/gifs/AVA_9.gif)
 ![](.images/gifs/AVA_10.gif) ![](.images/gifs/BDD_2.gif) ![](.images/gifs/BDD_4.gif)  ![](.images/gifs/Charades_7.gif)
 ![](.images/gifs/Charades_10.gif) ![](.images/gifs/HACS_2.gif) ![](.images/gifs/HACS_7.gif) ![](.images/gifs/HACS_8.gif)
 ![](.images/gifs/HACS_10.gif) ![](.images/gifs/LaSOT_2.gif) ![](.images/gifs/LaSOT_4.gif) ![](.images/gifs/LaSOT_8.gif)
-![](.images/gifs/YFCC100M_2.gif) ![](.images/gifs/YFCC100M_6.gif) 
-<!-- 
-![](.images/gifs/YFCC100M_8.gif) ![](.images/gifs/Charades_5.gif) 
+![](.images/gifs/YFCC100M_2.gif) ![](.images/gifs/YFCC100M_6.gif)
+<!--
+![](.images/gifs/YFCC100M_8.gif) ![](.images/gifs/Charades_5.gif)
 -->
+
+### Updates
+
+* *24-12-2022:* Evaluation code is now available!
 
 ### Abstract
 
@@ -68,7 +72,13 @@ python burstapi/demo.py --images_base_dir /path/to/dataset/images --annotations_
 
 ## Evaluation Code
 
-Will be uploaded soon to [TrackEval](https://github.com/JonathonLuiten/TrackEval).
+The evaluation code has been integrated into the [TrackEval](https://github.com/JonathonLuiten/TrackEval) repository. You can either set up the directory structure required by TrackEval yourself, or you can use the wrapper API provided in this repo in `burstapi/eval` as follows:
+
+Your results should be in a single JSON file in the same format as the ground-truth (see [annotation format](ANNOTATION_FORMAT.md)). Then you can call the eval script by running:
+
+```
+bash burstapi/eval/run.sh --pred /path/to/your/predictions.json --gt /path/to/directory/with/gt_annotations --task {class_guided,exemplar_guided,open_world}
+```
 
 ## Baselines
 
