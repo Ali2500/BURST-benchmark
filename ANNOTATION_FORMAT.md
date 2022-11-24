@@ -81,3 +81,6 @@ For the training set, we adopted a semi-automated workflow for annotating tempor
 - In the `segmentations` and `track_category_ids` fields, track IDs are encoded as strings (the JSON file format enforces that dict keys must be strings). Remember to cast them as int when parsing the annotations.
 
 
+#### Format for Evaluation Code
+
+For evaluating your predicted results, the code expects a single JSON file with the same format as the ground-truth format explained above. When generating this file, we recommnd simply loading the ground-truth file (available for both val and test sets) and replacing the `track_category_ids` and `segmentations` fields for every video sequence with your predicted results. 
