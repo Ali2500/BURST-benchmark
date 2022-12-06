@@ -1,6 +1,6 @@
 # BURST: A Benchmark for Unifying Object Recognition, Segmentation and Tracking in Video (WACV'23)
 
-Ali Athar, Jonathon Luiten, Paul Voigtlaender, Tarasha Khurana, Achal Dave, Bastian Leibe, Deva Ramanan
+[Ali Athar](https://www.aliathar.net/), Jonathon Luiten, Paul Voigtlaender, Tarasha Khurana, Achal Dave, Bastian Leibe, Deva Ramanan
 
 [`PDF`](https://arxiv.org/pdf/2209.12118.pdf) | [`Bibtex`](https://github.com/Ali2500/BURST-benchmark/blob/main/README.md#cite) | [`Dataset Images`](https://motchallenge.net/tao_download.php) | [`Dataset Annotations`](https://omnomnom.vision.rwth-aachen.de/data/BURST/annotations.zip)
 
