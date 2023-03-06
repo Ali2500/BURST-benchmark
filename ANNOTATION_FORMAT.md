@@ -55,7 +55,7 @@ track_category_ids:
     ...
 ``` 
 
-The `segmentations` field is a list with one entry per annotated video frame. Each list element is a dict with track IDs as keys and encoded masks as values
+The `segmentations` field is a list with one entry per annotated video frame. Each list element is a dict with track IDs as keys and encoded masks and other attributes as values
 
 ```
 segmentations:
