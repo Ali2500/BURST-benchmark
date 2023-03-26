@@ -83,4 +83,4 @@ For the training set, we adopted a semi-automated workflow for annotating tempor
 
 #### Format for Evaluation Code
 
-For evaluating your predicted results, the code expects a single JSON file with the same format as the ground-truth format explained above. For the exemplar-guided and open-world tasks, the `track_category_ids` field is irrelevant and can be filled with any number.
+For evaluating your predicted results, the code expects a single JSON file with the same format as the ground-truth format explained above. For the exemplar-guided and open-world tasks, the `track_category_ids` field is still required for parsing the prediction file, but the value is irrelevant i.e. you can assign any class ID to the instances.
