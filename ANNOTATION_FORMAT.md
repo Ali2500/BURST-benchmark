@@ -83,4 +83,4 @@ For the training set, we adopted a semi-automated workflow for annotating tempor
 
 #### Format for Evaluation Code
 
-For evaluating your predicted results, the code expects a single JSON file with the same format as the ground-truth format explained above. When generating this file, we recommnd simply loading the ground-truth file (available for both val and test sets) and replacing the `track_category_ids` and `segmentations` fields for every video sequence with your predicted results. Note that predictions for `track_category_ids` are only needed for the common and long-tail class-guided tasks. For the exemplar-guided and open-world tasks, `track_category_ids` is irrelevant and can safely be set to any value without effecting the score.
+For evaluating your predicted results, the code expects a single JSON file with the same format as the ground-truth format explained above. For the exemplar-guided and open-world tasks, the `track_category_ids` field is irrelevant and can be filled with any number.
