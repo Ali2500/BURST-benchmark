@@ -82,7 +82,7 @@ bash burstapi/eval/run.sh --pred /path/to/your/predictions.json --gt /path/to/di
 
 ## Baselines
 
-Coming soon
+See `baselines/README.md`
 
 ## Cite
 
