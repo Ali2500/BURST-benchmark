@@ -19,6 +19,7 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 
 ### Updates
 
+* **27-03-2023:** STCN tracker baseline is available.
 * **24-11-2022:** Evaluation code is now available.
 * **24-09-2022:** Dataset annotations are public.
 
