@@ -1,12 +1,12 @@
 # BURST: A Benchmark for Unifying Object Recognition, Segmentation and Tracking in Video (WACV'23)
 
-Ali Athar, Jonathon Luiten, Paul Voigtlaender, Tarasha Khurana, Achal Dave, Bastian Leibe, Deva Ramanan
+[Ali Athar](https://www.aliathar.net/), Jonathon Luiten, Paul Voigtlaender, Tarasha Khurana, Achal Dave, Bastian Leibe, Deva Ramanan
 
-[`arXiv`](https://arxiv.org/pdf/2209.12118.pdf) | [`Bibtex`](https://github.com/Ali2500/BURST-benchmark/blob/main/README.md#cite) | [`Dataset Images`](https://motchallenge.net/tao_download.php) | [`Dataset Annotations`](https://omnomnom.vision.rwth-aachen.de/data/BURST/annotations.zip)
+[`PDF`](https://arxiv.org/pdf/2209.12118.pdf) | [`Bibtex`](https://github.com/Ali2500/BURST-benchmark/blob/main/README.md#cite) | [`Dataset Images`](https://motchallenge.net/tao_download.php) | [`Dataset Annotations`](https://omnomnom.vision.rwth-aachen.de/data/BURST/annotations.zip)
 
 ### TL;DR
 
-BURST is a dataset/benchmark for object segmentation in video. It contains a total of 2,914 videos with pixel-precise segmentation masks for 16,089 unique object tracks (600,000 per-frame masks) spanning 482 object classes.
+BURST is a dataset/benchmark for object segmentation in video. It contains a total of 2,914 videos with pixel-precise segmentation masks for 16,089 unique object tracks (600,000 per-frame masks) spanning 482 object classes. It is based on the existing TAO dataset which contains box-level annotations which we extended to pixel-precise masks.
 
 ![](.images/gifs/AVA_2.gif) ![](.images/gifs/AVA_3.gif) ![](.images/gifs/AVA_5.gif) ![](.images/gifs/AVA_9.gif)
 ![](.images/gifs/AVA_10.gif) ![](.images/gifs/BDD_2.gif) ![](.images/gifs/BDD_4.gif)  ![](.images/gifs/Charades_7.gif)
@@ -19,7 +19,8 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 
 ### Updates
 
-* *24-12-2022:* Evaluation code is now available!
+* **24-11-2022:** Evaluation code is now available.
+* **24-09-2022:** Dataset annotations are public.
 
 ### Abstract
 
@@ -67,10 +68,10 @@ python burstapi/demo.py --images_base_dir /path/to/dataset/images --annotations_
 ```
 
 - `--images_base_dir` should have three sub-folders in it: `train`, `val` and `test` with the images for each of those splits.
-- When running the demo script for one of the `first_frame_annotations` files, also include an additional `--first_frame_annotations` argument to the above command. The demo script will then als oshow the first-frame exemplar point.
+- When running the demo script for one of the `first_frame_annotations` files, also include an additional `--first_frame_annotations` argument to the above command. The demo script will then also show the first-frame exemplar point.
 
 
-## Evaluation Code
+## Evaluation
 
 The evaluation code has been integrated into the [TrackEval](https://github.com/JonathonLuiten/TrackEval) repository. You can either set up the directory structure required by TrackEval yourself, or you can use the wrapper API provided in this repo in `burstapi/eval` as follows:
 
@@ -79,6 +80,12 @@ Your results should be in a single JSON file in the same format as the ground-tr
 ```
 bash burstapi/eval/run.sh --pred /path/to/your/predictions.json --gt /path/to/directory/with/gt_annotations --task {class_guided,exemplar_guided,open_world}
 ```
+
+For this to work, you need to clone the TrackEval repo and set the environment variable `TRACKEVAL_DIR` to its path.
+
+**Frame-rate:** The val and test sets are evaluated at 1FPS. The eval code can handle result files with arbitrary frame rates (the predicted masks for un-annotated frames are simply ignored).
+
+**Additional Details:** This bash script creates a temporary directory and copies the provided predictions and ground-truth files there before calling the eval scripts for BURST in TrackEval. The three exemplar-guided tasks share the same evaluation procedure, as do the common and long-tail class-guided tasks. For the open-world tracking task, the internal TrackEval script is actually executed three times for the different class splits and the results for each run are printed separately.
 
 ## Baselines
 
