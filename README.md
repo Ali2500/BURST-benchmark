@@ -31,6 +31,9 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 
 ## Task Taxonomy
 
+<p align="center">
+  <img width="692" height="171" src=".images/task_taxonomy.PNG">
+</p>
 ![](.images/task_taxonomy.PNG)
 
 ## Dataset Download
