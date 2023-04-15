@@ -8,12 +8,6 @@
 
 BURST is a dataset/benchmark for object segmentation in video. It contains a total of 2,914 videos with pixel-precise segmentation masks for 16,089 unique object tracks (600,000 per-frame masks) spanning 482 object classes. It is based on the existing TAO dataset which contains box-level annotations which we extended to pixel-precise masks.
 
-## Task Taxonomy
-
-<p align="center">
-  <img width="692" height="171" src=".images/task_taxonomy.PNG">
-</p>
-
 ![](.images/gifs/AVA_2.gif) ![](.images/gifs/AVA_3.gif) ![](.images/gifs/AVA_5.gif) ![](.images/gifs/AVA_9.gif)
 ![](.images/gifs/AVA_10.gif) ![](.images/gifs/BDD_2.gif) ![](.images/gifs/BDD_4.gif)  ![](.images/gifs/Charades_7.gif)
 ![](.images/gifs/Charades_10.gif) ![](.images/gifs/HACS_2.gif) ![](.images/gifs/HACS_7.gif) ![](.images/gifs/HACS_8.gif)
@@ -22,6 +16,12 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 <!--
 ![](.images/gifs/YFCC100M_8.gif) ![](.images/gifs/Charades_5.gif)
 -->
+
+## Task Taxonomy
+
+<p align="center">
+  <img width="692" height="171" src=".images/task_taxonomy.PNG">
+</p>
 
 ### Updates
 
