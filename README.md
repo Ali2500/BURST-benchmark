@@ -29,6 +29,10 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 
 **NOTE:** The annotations in this dataset are not exhaustive i.e. not every object belonging to the dataset class set is annotated. We do, however, provide two fields per video which convey (1) which classes are present but not exhaustively annotated, and (2) which classes are definitely not present in the video. This follows the format of the LVIS dataset.
 
+## Task Taxonomy
+
+![](.images/gifs/YFCC100M_2.gif) ![](.images/task_taxonomy.PNG)
+
 ## Dataset Download
 
 - Image sequences: Available from the [MOTChallenge website](https://motchallenge.net/tao_download.php).
