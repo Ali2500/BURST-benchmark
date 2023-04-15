@@ -19,6 +19,7 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 
 ## Updates
 
+* **03-04-2023:** We're organizing a workshop at CVPR'23 based on the BURST open-world tracking task! See [workshop page](https://taodataset.org/workshop/cvpr23/index.html) for more details
 * **27-03-2023:** STCN tracker baseline is available.
 * **24-11-2022:** Evaluation code is now available.
 * **24-09-2022:** Dataset annotations are public.
