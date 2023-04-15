@@ -2,7 +2,7 @@
 
 [Ali Athar](https://www.aliathar.net/), Jonathon Luiten, Paul Voigtlaender, Tarasha Khurana, Achal Dave, Bastian Leibe, Deva Ramanan
 
-[`PDF`](https://arxiv.org/pdf/2209.12118.pdf) | [`Bibtex`](https://github.com/Ali2500/BURST-benchmark/blob/main/README.md#cite) | [`Dataset Images`](https://motchallenge.net/tao_download.php) | [`Dataset Annotations`](https://omnomnom.vision.rwth-aachen.de/data/BURST/annotations.zip)
+[`PDF`](https://arxiv.org/pdf/2209.12118.pdf) | [`Bibtex`](https://github.com/Ali2500/BURST-benchmark/blob/main/README.md#cite) | [`Dataset Images`](https://motchallenge.net/tao_download.php) | [`Dataset Annotations`](https://omnomnom.vision.rwth-aachen.de/data/BURST/annotations.zip) | [`Leaderboard`](https://paperswithcode.com/dataset/burst)
 
 ### TL;DR
 
@@ -19,6 +19,7 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 
 ## Updates
 
+* **15-04-2023:** [Leaderboard](https://paperswithcode.com/dataset/burst) is up on paperswithcode
 * **03-04-2023:** We're organizing a workshop at CVPR'23 based on the BURST open-world tracking task! See [workshop page](https://taodataset.org/workshop/cvpr23/index.html) for more details
 * **27-03-2023:** STCN tracker baseline is available.
 * **24-11-2022:** Evaluation code is now available.
@@ -94,6 +95,10 @@ For this to work, you need to clone the TrackEval repo and set the environment v
 **Frame-rate:** The val and test sets are evaluated at 1FPS. The eval code can handle result files with arbitrary frame rates (the predicted masks for un-annotated frames are simply ignored).
 
 **Additional Details:** This bash script creates a temporary directory and copies the provided predictions and ground-truth files there before calling the eval scripts for BURST in TrackEval. The three exemplar-guided tasks share the same evaluation procedure, as do the common and long-tail class-guided tasks. For the open-world tracking task, the internal TrackEval script is actually executed three times for the different class splits and the results for each run are printed separately.
+
+## Leaderboard
+
+Leaderboard is available on [paperswithcode](https://paperswithcode.com/dataset/burst). There is no dedicated eval server since the test set annotations are public. We have listed all 6 BURST tasks on paperswithcode with validation and test sets listed separately i.e. there are a total of 6*2=12 leaderboards
 
 ## Baselines
 
