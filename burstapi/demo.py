@@ -5,6 +5,8 @@ from burstapi.dataset import BURSTDataset
 
 import cv2
 import numpy as np
+import os
+import os.path as osp
 import burstapi.visualization_utils as viz_utils
 
 
@@ -12,7 +14,7 @@ def main(args):
     dataset = BURSTDataset(annotations_file=args.annotations_file,
                            images_base_dir=args.images_base_dir)
 
-    cv2.namedWindow("Video Frame", cv2.WINDOW_NORMAL)
+    #cv2.namedWindow("Video Frame", cv2.WINDOW_NORMAL)
     color_map = viz_utils.create_color_map()
 
     print("-----------------------------------------\n"
@@ -26,6 +28,9 @@ def main(args):
 
     for i in range(dataset.num_videos):
         video = dataset[i]
+        
+        if args.seq and f"{video.dataset}/{video.name}" != args.seq:
+            continue
 
         print(f"- Dataset: {video.dataset}\n"
               f"- Name: {video.name}")
@@ -55,6 +60,8 @@ def main(args):
             image_t = image_t[:, :, ::-1]  # convert from RGB to BGR for OpenCV
 
             for track_id, annotation in annotations_t.items():
+                # if track_id not in (1, 2, 3, 4):
+                #     continue
 
                 if isinstance(annotation, np.ndarray):  # mask object
                     mask = annotation
@@ -72,6 +79,15 @@ def main(args):
                 )
 
             annotated_images.append(image_t)
+            
+        if args.save_dir:
+            print(f"\nSaving visualizations to: {args.save_dir}")
+            save_dir = osp.join(args.save_dir, video.dataset, video.name)
+            os.makedirs(save_dir, exist_ok=True)
+            
+            for image, path in tqdm(zip(annotated_images, video.get_image_paths()), total=len(annotated_images)):
+                filename = osp.split(path)[-1]
+                cv2.imwrite(osp.join(save_dir, filename), image)
 
         # start from the first frame
         current_frame_index = 0
@@ -102,5 +118,9 @@ if __name__ == '__main__':
     parser.add_argument("--images_base_dir", required=True)
     parser.add_argument("--annotations_file", required=True)
     parser.add_argument("--first_frame_annotations", action='store_true')
+    
+    # extra options
+    parser.add_argument("--save_dir", required=False)
+    parser.add_argument("--seq", required=False)
 
     main(parser.parse_args())

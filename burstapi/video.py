@@ -50,6 +50,22 @@ class BURSTVideo:
             track_id: self._track_category_ids[track_id]
             for track_id in self.track_ids
         }
+        
+    def get_image_paths(self, frame_indices: Optional[List[int]] = None) -> List[str]:
+        """
+        Get file paths to all image frames
+        :param frame_indices: Optional argument specifying list of frame indices to load. All indices should be satisfy
+        0 <= t < len(self.num_annotated_frames)
+        :return: List of file paths
+        """
+        if frame_indices is None:
+            frame_indices = list(range(self.num_annotated_frames))
+        else:
+            assert all([0 <= t < self.num_annotated_frames for t in frame_indices]), f"One or more frame indices are " \
+                f"invalid"
+                
+        return [osp.join(self._images_dir, self.annotated_image_paths[t]) for t in frame_indices]
+        
 
     def load_images(self, frame_indices: Optional[List[int]] = None) -> List[np.ndarray]:
         """
