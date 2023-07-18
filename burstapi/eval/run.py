@@ -79,34 +79,7 @@ def print_results(dataset, res):
 
 
 def main(args):
-    # Command line interface:
-    default_eval_config = {
-        'USE_PARALLEL': True,
-        'NUM_PARALLEL_CORES': 8,
-        'BREAK_ON_ERROR': True,  # Raises exception and exits with error
-        'RETURN_ON_ERROR': False,  # if not BREAK_ON_ERROR, then returns from function on error
-
-        'PRINT_RESULTS': True,
-        'PRINT_ONLY_COMBINED': False,
-        'PRINT_CONFIG': False,
-        'DISPLAY_LESS_PROGRESS': True,
-
-        'OUTPUT_SUMMARY': True,
-        'OUTPUT_EMPTY_CLASSES': True,  # If False, summary files are not output for classes with no detections
-        'OUTPUT_DETAILED': True,
-        'PLOT_CURVES': True,
-    }
-    default_eval_config['PRINT_ONLY_COMBINED'] = True
-    default_eval_config['DISPLAY_LESS_PROGRESS'] = True
-    default_eval_config['PLOT_CURVES'] = False
-    default_eval_config["OUTPUT_DETAILED"] = False
-    default_eval_config["PRINT_RESULTS"] = False
-    default_eval_config["OUTPUT_SUMMARY"] = False
-
     dataset_config = BURST.get_default_dataset_config()
-
-    # default_metrics_config = {'METRICS': ['HOTA', 'TrackMAP']}
-    # config = {**default_eval_config, **default_dataset_config, **default_metrics_config}  # Merge default configs
 
     print("Reading files...")
     gt_file_path = osp.join(args.gt, "all_classes.json")
@@ -114,8 +87,6 @@ def main(args):
     dataset = BURST(pred_path=args.pred, gt_path=gt_file_path, config=dataset_config)
     metrics_list = [HOTA(), TrackMAP(), Count()]
     metric_names = ["HOTA", "TrackMAP", "Count"]
-
-    config = default_eval_config
 
     time_start = time.time()
     _, seq_list, class_list = dataset.get_eval_info()
@@ -187,34 +158,6 @@ def main(args):
     # Print and output results in various formats
     print(f"Eval took {(time.time() - time_start):.3f} seconds\n")
 
-    # output_fol = dataset.get_output_fol(tracker)
-    # tracker_display_name = dataset.get_display_name(tracker)
-
-    for c_cls in res['COMBINED_SEQ'].keys():  # class_list + combined classes if calculated
-        summaries = []
-        details = []
-        num_dets = res['COMBINED_SEQ'][c_cls]['Count']['Dets']
-        if config['OUTPUT_EMPTY_CLASSES'] or num_dets > 0:
-            for metric, metric_name in zip(metrics_list, metric_names):
-                # for combined classes there is no per sequence evaluation
-                if c_cls in combined_cls_keys:
-                    table_res = {'COMBINED_SEQ': res['COMBINED_SEQ'][c_cls][metric_name]}
-                else:
-                    table_res = {seq_key: seq_value[c_cls][metric_name] for seq_key, seq_value
-                                    in res.items()}
-
-                if config['PRINT_RESULTS'] and config['PRINT_ONLY_COMBINED']:
-                    dont_print = dataset.should_classes_combine and c_cls not in combined_cls_keys
-                    if not dont_print:
-                        metric.print_table({'COMBINED_SEQ': table_res['COMBINED_SEQ']},
-                                            "blah tracker", c_cls)
-                elif config['PRINT_RESULTS']:
-                    metric.print_table(table_res, "blah tracker", c_cls)
-                if config['OUTPUT_SUMMARY']:
-                    summaries.append(metric.summary_results(table_res))
-                if config['OUTPUT_DETAILED']:
-                    details.append(metric.detailed_results(table_res))
-
     out_dict = print_results(dataset, res)
     if args.output:
         with open(args.output, 'w') as fh:
@@ -258,30 +201,6 @@ def print_results_ow(res_all, res_common, res_uncommon):
 
 
 def main_ow(args):
-    # Command line interface:
-    default_eval_config = {
-        'USE_PARALLEL': True,
-        'NUM_PARALLEL_CORES': 8,
-        'BREAK_ON_ERROR': True,  # Raises exception and exits with error
-        'RETURN_ON_ERROR': False,  # if not BREAK_ON_ERROR, then returns from function on error
-
-        'PRINT_RESULTS': True,
-        'PRINT_ONLY_COMBINED': True,
-        'PRINT_CONFIG': False,
-        'DISPLAY_LESS_PROGRESS': True,
-
-        'OUTPUT_SUMMARY': True,
-        'OUTPUT_EMPTY_CLASSES': True,  # If False, summary files are not output for classes with no detections
-        'OUTPUT_DETAILED': True,
-        'PLOT_CURVES': True,
-    }
-    default_eval_config['PRINT_ONLY_COMBINED'] = True
-    default_eval_config['DISPLAY_LESS_PROGRESS'] = True
-    default_eval_config['PLOT_CURVES'] = False
-    default_eval_config["OUTPUT_DETAILED"] = False
-    default_eval_config["PRINT_RESULTS"] = False
-    default_eval_config["OUTPUT_SUMMARY"] = False
-
     dataset_config = BURST_OW.get_default_dataset_config()
     time_start = time.time()
 
@@ -292,7 +211,6 @@ def main_ow(args):
         metrics_list = [HOTA(), TrackMAP(), Count()]
         metric_names = ["HOTA", "Count"]
 
-        config = default_eval_config
         _, seq_list, class_list = dataset.get_eval_info()
         seq_list_sorted = sorted(seq_list)
 
@@ -360,6 +278,7 @@ def main_ow(args):
 
         return res
 
+    print("[WARN] Do not overwrite the prediction file until this eval script has finished executing")
     print("(1/3) Running eval for all classes...")
     res_all = process_split("all_classes.json")
 
