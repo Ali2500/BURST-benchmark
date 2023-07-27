@@ -319,6 +319,7 @@ if __name__ == '__main__':
         "--nprocs", type=int, default=8,
         help="Number of parallel processes to use. Setting this to <=1 disables parallelization"
     )
+    
     optional.add_argument(
         "--output", "-o", required=False,
         help="Optional file path. The metrics will be dumped to this location as a JSON dict"
