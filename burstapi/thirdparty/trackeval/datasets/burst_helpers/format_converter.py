@@ -128,8 +128,9 @@ class GroundTruthBURSTFormatToTAOFormatConverter:
                 'split': self._split}
 
     def _make_categories(self):
-        tao_categories_path = os.path.join(os.path.dirname(__file__), 'tao_categories.json')
-        with open(tao_categories_path) as f:
+        tao_categories_path = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, os.pardir, os.pardir, "assets", 'tao_categories.json')
+        # tao_categories_path = os.path.join(os.path.dirname(__file__), 'tao_categories.json')
+        with open(os.path.realpath(tao_categories_path)) as f:
             return json.load(f)
 
 
