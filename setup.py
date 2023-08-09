@@ -112,7 +112,7 @@ setup(
     # },
     install_requires=REQUIRED,
     extras_require=EXTRAS,
-    package_data={"burstapi": os.path.join("burstapi", "assets", "tao_categories.json")},  # [os.path.join(here, "burstapi", "assets", "tao_categories.json")]
+    package_data={"burstapi": [os.path.join("burstapi", "assets", "tao_categories.json")]},  # [os.path.join(here, "burstapi", "assets", "tao_categories.json")]
     include_package_data=True,
     license='MIT',
     classifiers=[
