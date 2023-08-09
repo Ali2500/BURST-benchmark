@@ -55,21 +55,27 @@ track_category_ids:
     ...
 ``` 
 
-The `segmentations` field is a list with one entry per annotated video frame. Each list element is a dict with track IDs as keys and encoded masks and other attributes as values
+The `segmentations` field is a list with one entry per annotated video frame. Each list element is a dict with track IDs as keys and encoded masks and other attributes as values. In the example below, '1' and '2' are the track IDs
 
 ```
-segmentations:
-    - rle: <str>
-      is_gt: <bool>
-      score: <float>
-      bbox:               # only present in `first_frame_annotations` file
-        - x coord <int>
-        - y coord <int>
-        - width <int>
-        - height <int>
-      point:              # only present in `first_frame_annotations` file
-        - x coord <int>
-        - y coord <int>
+segmentations: 
+    - 1:                    # first frame
+        rle: <str>
+        is_gt: <bool>
+        score: <float>
+        bbox:               # only present in `first_frame_annotations` file
+          - x coord <int>
+          - y coord <int>
+          - width <int>
+          - height <int>
+        point:              # only present in `first_frame_annotations` file
+          - x coord <int>
+          - y coord <int>
+      2:
+    - 1: ...                # second frame
+      2: ...
+    - 1: ...                # third frame
+      2: ...
 ``` 
 
 For the training set, we adopted a semi-automated workflow for annotating temporally dense object masks. The `is_gt` field conveys whether the given mask was annotated automatically or by a human annotator. The `score` field conveys the confidence for an automatically annotated mask.

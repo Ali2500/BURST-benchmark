@@ -19,6 +19,7 @@ BURST is a dataset/benchmark for object segmentation in video. It contains a tot
 
 ## Updates
 
+* **09-08-2023:** Eval code improvement: cleaner output and no dependency on TrackEval
 * **15-04-2023:** [Leaderboard](https://paperswithcode.com/dataset/burst) is up on paperswithcode
 * **03-04-2023:** We're organizing a workshop at CVPR'23 based on the BURST open-world tracking task! See [workshop page](https://taodataset.org/workshop/cvpr23/index.html) for more details
 * **27-03-2023:** STCN tracker baseline is available.
@@ -82,19 +83,19 @@ python burstapi/demo.py --images_base_dir /path/to/dataset/images --annotations_
 
 ## Evaluation
 
-The evaluation code has been integrated into the [TrackEval](https://github.com/JonathonLuiten/TrackEval) repository. You can either set up the directory structure required by TrackEval yourself, or you can use the wrapper API provided in this repo in `burstapi/eval` as follows:
-
-Your results should be in a single JSON file in the same format as the ground-truth (see [annotation format](ANNOTATION_FORMAT.md)). Then you can call the eval script by running:
+Your results should be in a single JSON file in the same format as the ground-truth (see [annotation format](ANNOTATION_FORMAT.md)). Then run the eval script as follows:
 
 ```
-bash burstapi/eval/run.sh --pred /path/to/your/predictions.json --gt /path/to/directory/with/gt_annotations --task {class_guided,exemplar_guided,open_world}
+python burstapi/eval/run.py --pred /path/to/your/predictions.json --gt /path/to/directory/with/gt_annotations --task {class_guided,exemplar_guided,open_world}
 ```
 
-For this to work, you need to clone the TrackEval repo and set the environment variable `TRACKEVAL_DIR` to its path.
+You can also write out the metrics to disk by giving an additional argument: `--output /path/to/output.json`
+
+**Important:** If you predict a null mask for any object in a given frame, you should completely omit the per-frame entry for that object ID. Having RLE-encoded null masks in your predictions will negatively effect the score (we will fix this in the future).
 
 **Frame-rate:** The val and test sets are evaluated at 1FPS. The eval code can handle result files with arbitrary frame rates (the predicted masks for un-annotated frames are simply ignored).
 
-**Additional Details:** This bash script creates a temporary directory and copies the provided predictions and ground-truth files there before calling the eval scripts for BURST in TrackEval. The three exemplar-guided tasks share the same evaluation procedure, as do the common and long-tail class-guided tasks. For the open-world tracking task, the internal TrackEval script is actually executed three times for the different class splits and the results for each run are printed separately.
+**Acknowledgements:** The eval code is largely copy/pasted from Jonathon Luiten's [TrackEval](https://github.com/JonathonLuiten/TrackEval) repo.
 
 ## Leaderboard
 
