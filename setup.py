@@ -112,8 +112,8 @@ setup(
     # },
     install_requires=REQUIRED,
     extras_require=EXTRAS,
+    package_data={"burstapi": [os.path.join(here, "burstapi", "assets", "tao_categories.json")]},
     include_package_data=True,
-    data_files=[("burstapi/assets", [os.path.join(here, "burstapi", "assets", "tao_categories.json")])],
     license='MIT',
     classifiers=[
         # Trove classifiers
