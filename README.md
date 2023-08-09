@@ -67,13 +67,23 @@ For each split, `all_classes.json` is the primary file containing all mask annot
 
 **NOTE:** In contrast to other datasets, we have decided to make the test set annotations public. Remember though: with great power comes great responsibility. Please use the test set fairly when reporting scores for your methods.
 
+## Setup
+
+We tested the API code on python 3.7. To install dependencies run:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install OpenCV and Pillow since those are used by the  demo code for visualization. If you only want to run the evaluation then you can get by with the smaller/lighter set of dependencies in `requirements_eval.txt`.
+
 ## Parsing and Visualization
 
 Please refer to `burstapi/dataset.py` for example code to parse the annotations.
 
 Assuming the images and annotation files are downloaded, you can visualize the masks by running the following:
 
-```
+```bash
 python burstapi/demo.py --images_base_dir /path/to/dataset/images --annotations_file /path/to/any/of/the/annotation/files
 ```
 
@@ -85,7 +95,7 @@ python burstapi/demo.py --images_base_dir /path/to/dataset/images --annotations_
 
 Your results should be in a single JSON file in the same format as the ground-truth (see [annotation format](ANNOTATION_FORMAT.md)). Then run the eval script as follows:
 
-```
+```bash
 python burstapi/eval/run.py --pred /path/to/your/predictions.json --gt /path/to/directory/with/gt_annotations --task {class_guided,exemplar_guided,open_world}
 ```
 
