@@ -14,7 +14,7 @@ def main(args):
     dataset = BURSTDataset(annotations_file=args.annotations_file,
                            images_base_dir=args.images_base_dir)
 
-    #cv2.namedWindow("Video Frame", cv2.WINDOW_NORMAL)
+    cv2.namedWindow("Video Frame", cv2.WINDOW_NORMAL)
     color_map = viz_utils.create_color_map()
 
     print("-----------------------------------------\n"
@@ -60,9 +60,6 @@ def main(args):
             image_t = image_t[:, :, ::-1]  # convert from RGB to BGR for OpenCV
 
             for track_id, annotation in annotations_t.items():
-                # if track_id not in (1, 2, 3, 4):
-                #     continue
-
                 if isinstance(annotation, np.ndarray):  # mask object
                     mask = annotation
                     point = None

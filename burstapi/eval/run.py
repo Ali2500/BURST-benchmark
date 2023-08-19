@@ -88,6 +88,8 @@ def main(args):
     metrics_list = [HOTA(), TrackMAP(), Count()]
     metric_names = ["HOTA", "TrackMAP", "Count"]
 
+    dataset.config["EXEMPLAR_GUIDED"] = args.task == "exemplar_guided"
+
     time_start = time.time()
     _, seq_list, class_list = dataset.get_eval_info()
     seq_list_sorted = sorted(seq_list)

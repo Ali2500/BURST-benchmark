@@ -64,17 +64,17 @@ def annotate_image(image, mask, color, label, point=None, **kwargs):
     text_font = kwargs.get("text_font", cv2.FONT_HERSHEY_SIMPLEX)
     font_size = kwargs.get("font_size", 0.5)
 
-    # annotated_image = cv2.rectangle(cv2.UMat(annotated_image), (xmin, ymin), (xmax, ymax), color=tuple(color),
-    #                                 thickness=bbox_thickness)
+    annotated_image = cv2.rectangle(cv2.UMat(annotated_image), (xmin, ymin), (xmax, ymax), color=tuple(color),
+                                    thickness=bbox_thickness)
 
-    # (text_width, text_height), _ = cv2.getTextSize(label, text_font, font_size, thickness=1)
-    # text_offset_x, text_offset_y = int(xmin + 2), int(ymin + text_height + 2)
+    (text_width, text_height), _ = cv2.getTextSize(label, text_font, font_size, thickness=1)
+    text_offset_x, text_offset_y = int(xmin + 2), int(ymin + text_height + 2)
 
-    # text_bg_box_pt1 = int(text_offset_x), int(text_offset_y + 2)
-    # text_bg_box_pt2 = int(text_offset_x + text_width + 2), int(text_offset_y - text_height - 2)
+    text_bg_box_pt1 = int(text_offset_x), int(text_offset_y + 2)
+    text_bg_box_pt2 = int(text_offset_x + text_width + 2), int(text_offset_y - text_height - 2)
 
-    # annotated_image = cv2.rectangle(cv2.UMat(annotated_image), text_bg_box_pt1, text_bg_box_pt2, color=(255, 255, 255), thickness=-1)
-    # annotated_image = cv2.putText(cv2.UMat(annotated_image), label, (text_offset_x, text_offset_y), text_font, font_size, (0, 0, 0))
+    annotated_image = cv2.rectangle(cv2.UMat(annotated_image), text_bg_box_pt1, text_bg_box_pt2, color=(255, 255, 255), thickness=-1)
+    annotated_image = cv2.putText(cv2.UMat(annotated_image), label, (text_offset_x, text_offset_y), text_font, font_size, (0, 0, 0))
 
     if point is not None:
         # use a darker color so the point is more visible on the mask
