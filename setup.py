@@ -21,14 +21,8 @@ REQUIRES_PYTHON = '>=3.6.0'
 VERSION = '0.1.0'
 
 # What packages are required for this module to be executed?
-REQUIRED = [
-    'tqdm', 'opencv-python', 'numpy', 'Pillow', 'tabulate', 'scipy', 'pycocotools', 
-]
-
-# What packages are optional?
-EXTRAS = {
-    # 'fancy feature': ['django'],
-}
+REQUIRED = ['tqdm', 'numpy', 'tabulate', 'scipy', 'pycocotools']
+EXTRAS = {'demo': ['opencv-python', 'Pillow']}
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
