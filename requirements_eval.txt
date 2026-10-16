@@ -1,4 +1,4 @@
-numpy==1.21.6
+numpy>=1.21.6
 pycocotools==2.0.4
 scipy==1.7.3
 tqdm==4.64.0
